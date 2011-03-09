@@ -10,21 +10,14 @@ module Governor
       private
       def base.time_delta(year, month = nil, day = nil)
         from = Time.mktime(year, month || 1, day || 1)
-        if day.present?
-          to = from.end_of_day
+        to = if day.present?
+          from.end_of_day
         elsif month.present?
-          to = from.end_of_month
+          from.end_of_month
         else
-          to = from.end_of_year
+          from.end_of_year
         end
-        # to -= 1 # pull off 1 second so we don't overlap onto the next day
         [from, to]
-        # 
-        # to = from.next_year
-        # to = from.next_month unless month.blank?
-        # to = from + 1.day unless day.blank?
-        # to = to - 1 # pull off 1 second so we don't overlap onto the next day
-        # return [from, to]
       end
     end
   end
