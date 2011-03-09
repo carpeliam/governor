@@ -1,9 +1,9 @@
 Governor
 ========
 
-Governor is the pluggable blogging platform for Rails, built for people who
-want to build their blog into their website, not build their website into
-their blog.
+**Governor** (named after Rod Blagojevich) is the pluggable blogging platform
+for Rails, built for people who want to build their blog into their website,
+not build their website into their blog.
 
 I'm just getting started, but feel free to poke around. I'm sure that when
 this starts getting functional, I'll write some setup documentation here. And
@@ -23,6 +23,6 @@ Contributing to Governor
 Copyright
 ---------
 
-Copyright (c) 2011 Liam Morley. See LICENSE.txt for
+Copyright &copy; 2011 Liam Morley. See LICENSE.txt for
 further details.
 
