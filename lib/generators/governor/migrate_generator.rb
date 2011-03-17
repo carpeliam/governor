@@ -14,7 +14,6 @@ module Governor
     end
   
     def create_migration_file
-      migration_template 'migrations/create_articles.rb', 'db/migrate/create_articles.rb', :skip => true
       PluginManager.plugins.each do |plugin|
         plugin.migrations.each do |migration|
           sleep 1 # advance the file name

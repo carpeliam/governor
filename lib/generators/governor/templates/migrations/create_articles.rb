@@ -1,7 +1,7 @@
 module Governor
-  class CreateArticles < ActiveRecord::Migration
+  class Create<%= model_name.pluralize %> < ActiveRecord::Migration
     def self.up
-      create_table :articles do |t|
+      create_table :<%= table_name %> do |t|
         t.string      :title, :description
         t.string      :format, :default => 'default'
         t.text        :post
@@ -11,7 +11,7 @@ module Governor
     end
 
     def self.down
-      drop_table :articles
+      drop_table :<%= table_name %>
     end
   end
 end
