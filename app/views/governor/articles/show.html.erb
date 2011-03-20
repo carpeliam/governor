@@ -1,0 +1,7 @@
+<div id="blog">
+	<div class="articles">
+	   <%= render @article %>
+	</div>
+    <%= render_plugin_partial('after_article_on_article_page', :locals => {:article => @article}) %>
+</div>
+<%= link_to 'Back', articles_path %>

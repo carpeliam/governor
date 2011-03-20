@@ -1,0 +1,26 @@
+<% form_for @article do |f| %>
+  <p>
+    <b>Title</b><br>
+    <%= f.text_field :title %>
+  </p>
+
+  <p>
+    <b>Description</b><br>
+    <%= f.text_field :description %>
+  </p>
+
+  <p id="article_text">
+    <b>Post</b><br>
+    <%= f.text_area :post %>
+  </p>
+  
+  <p>
+    <b>Format</b> <%= f.select :format, Governor::Formatters.available_formatters.keys %>
+  </p>
+  
+  <%= render_plugin_partial('bottom_of_form', :locals => {:f => f}) %>
+  
+  <p>
+    <%= f.submit "#{controller.action_name.titleize} Article" %>
+  </p>
+<% end %>

@@ -22,6 +22,11 @@ module Governor
       migration_template 'migrations/create_articles.rb', "db/migrate/create_#{table_name}.rb", :skip => true
     end
     
+    def add_route
+      # route "resources :#{table_name}, :controller => 'governor/articles'"
+      route "governate :#{table_name}"
+    end
+    
     private
     def table_name
       @table_name ||= class_name.tableize
