@@ -16,4 +16,16 @@ module Governor
     self.resources[resource] = Governor::Mapping.new(resource, options)
   end
   
+  def self.setup
+    yield self
+  end
+  
+  def self.authorize_if(&blk)
+    @@authz_rules = blk
+  end
+  
+  def self.authorized?(article, action)
+    @@authz_rules.call(article, action)
+  end
+  
 end

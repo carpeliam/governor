@@ -24,5 +24,9 @@ module Governor
       @ref.get
     end
     
+    def humanize
+      @singular.to_s.humanize
+    end
+    
   end
 end
