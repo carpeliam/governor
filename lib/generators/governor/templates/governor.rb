@@ -8,7 +8,7 @@ end
 
 Governor.authorize_if do |article, action|
   case action.to_sym
-  when :new, :create then user_logged_in?
+  when :new, :create then user_signed_in?
   when :edit, :update, :destroy
     article.author == GOVERNOR_AUTHOR.call
   else

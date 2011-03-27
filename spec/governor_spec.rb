@@ -16,9 +16,9 @@ describe Governor do
     
     %w(new create).each do |action|
       it "should make sure a user is logged in when going to the #{action} page" do
-        MAIN.expects(:user_logged_in?).returns false
+        MAIN.expects(:user_signed_in?).returns false
         Governor.authorized?(nil, action).should be_false
-        MAIN.expects(:user_logged_in?).returns true
+        MAIN.expects(:user_signed_in?).returns true
         Governor.authorized?(nil, action).should be_true
       end
     end
