@@ -19,7 +19,7 @@ module Governor
     end
   
     def create_migration_file
-      migration_template 'migrations/create_articles.rb', "db/migrate/create_#{table_name}.rb", :skip => true
+      migration_template 'migrations/create_articles.rb', "db/migrate/governor_create_#{table_name}.rb", :skip => true
     end
     
     def add_route

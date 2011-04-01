@@ -7,7 +7,9 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'mocha'
-  gem 'will_paginate'
+  gem 'will_paginate', '~> 3.0.beta'
+  gem 'devise'
+  gem 'governor', :path => './'
 end
 # group :development do
 #   gem "rspec", "~> 2.3.0"
