@@ -1,6 +1,6 @@
-class GovernorCreate<%= model_name.pluralize %> < ActiveRecord::Migration
+class GovernorCreateArticles < ActiveRecord::Migration
   def self.up
-    create_table :<%= table_name %> do |t|
+    create_table :articles do |t|
       t.string      :title, :description
       t.string      :format, :default => 'default'
       t.text        :post
@@ -10,6 +10,6 @@ class GovernorCreate<%= model_name.pluralize %> < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :<%= table_name %>
+    drop_table :articles
   end
 end

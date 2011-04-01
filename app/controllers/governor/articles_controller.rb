@@ -1,5 +1,4 @@
-module Governor
-  class ArticlesController < ApplicationController
+class Governor::ArticlesController < ApplicationController
   # before_filter :resource, :only => [:show, :edit, ]
   before_filter :authorize_governor!, :except => [:index, :show, :find_by_date]
   # GET /articles
@@ -119,5 +118,4 @@ module Governor
   def authorize_governor!
     
   end
-end
 end
