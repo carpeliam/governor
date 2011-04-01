@@ -1,6 +1,8 @@
 module Governor
   module Article
     def self.included(base)
+      base.belongs_to :author, :polymorphic => true
+      
       def base.find_all_by_date(year, month = nil, day = nil, page = 1)
         from, to = self.time_delta(year, month, day)
         conditions = ['created_at BETWEEN ? AND ?', from, to]

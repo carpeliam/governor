@@ -30,6 +30,8 @@ GEM
       activesupport (= 3.0.5)
       arel (~> 2.0.2)
       tzinfo (~> 0.3.23)
+    activerecord-nulldb-adapter (0.2.1)
+      activerecord (>= 2.0.0, < 3.1)
     activeresource (3.0.5)
       activemodel (= 3.0.5)
       activesupport (= 3.0.5)
@@ -43,6 +45,10 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    factory_girl (2.0.0.beta2)
+    factory_girl_rails (1.1.beta1)
+      factory_girl (~> 2.0.0.beta)
+      rails (>= 3.0.0)
     git (1.2.5)
     i18n (0.5.0)
     jeweler (1.5.2)
@@ -57,8 +63,8 @@ GEM
     mime-types (1.16)
     mocha (0.9.12)
     polyglot (0.3.1)
-    rack (1.2.1)
-    rack-mount (0.6.13)
+    rack (1.2.2)
+    rack-mount (0.6.14)
       rack (>= 1.0.0)
     rack-test (0.5.7)
       rack (>= 1.0)
@@ -93,7 +99,7 @@ GEM
     thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
-    tzinfo (0.3.24)
+    tzinfo (0.3.25)
     warden (1.0.3)
       rack (>= 1.0.0)
     will_paginate (3.0.pre2)
@@ -102,7 +108,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-nulldb-adapter
   devise
+  factory_girl (~> 2.0.0.beta)
+  factory_girl_rails (~> 1.1.beta)
   governor!
   jeweler (~> 1.5.2)
   mocha
