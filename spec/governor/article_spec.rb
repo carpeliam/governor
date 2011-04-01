@@ -1,6 +1,7 @@
 require 'spec_helper'
 
-class ArticleStub
+class ArticleStub < ActiveRecord::Base
+  establish_connection 'nulldb'
   include Governor::Article
 end
 

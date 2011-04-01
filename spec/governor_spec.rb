@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'lib/generators/governor/templates/governor.rb'
 
-class FakeArticle
+class FakeArticle < ActiveRecord::Base
+  establish_connection 'nulldb'
   include Governor::Article
   def author
     'Rod'
@@ -9,16 +9,16 @@ class FakeArticle
 end
 
 # we're going to need 'self' later
-MAIN = self
+GOVERNOR_SPEC = self
 
 describe Governor do
   context "authorization" do
     
     %w(new create).each do |action|
       it "should make sure a user is logged in when going to the #{action} page" do
-        MAIN.expects(:user_signed_in?).returns false
+        GOVERNOR_SPEC.expects(:user_signed_in?).returns false
         Governor.authorized?(nil, action).should be_false
-        MAIN.expects(:user_signed_in?).returns true
+        GOVERNOR_SPEC.expects(:user_signed_in?).returns true
         Governor.authorized?(nil, action).should be_true
       end
     end
@@ -26,9 +26,9 @@ describe Governor do
     %w(edit update destroy).each do |action|
       it "should make sure the current user is the author when going to the #{action} page" do
         article = FakeArticle.new
-        MAIN.expects(:current_user).returns('milorad')
+        GOVERNOR_SPEC.expects(:current_user).returns('milorad')
         Governor.authorized?(article, action).should be_false
-        MAIN.expects(:current_user).returns('Rod')
+        GOVERNOR_SPEC.expects(:current_user).returns('Rod')
         Governor.authorized?(article, action).should be_true
       end
     end
