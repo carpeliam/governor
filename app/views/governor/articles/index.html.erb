@@ -2,3 +2,5 @@
 <% resources.each do |resource| %>
   <%= link_to resource.title, resource %><br>
 <% end %>
+
+<p><%= link_to 'New', new_resource_url %></p>
