@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Governor</title>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <h1>Governor</h1>
+      <img src="http://upload.wikimedia.org/wikipedia/commons/8/8b/Blagojevich_cropped.jpg" alt="Rod Blagojevich" width="170" height="204" />
+    </div>
+    
+    
+    <a href="https://github.com/carpeliam/governor"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://d3nwyuy0nl342s.cloudfront.net/img/30f550e0d38ceb6ef5b81500c64d970b7fb0f028/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub"></a>
+
+    <p><strong>Governor</strong> (named after Rod Blagojevich) is the pluggable blogging platform
+    for Rails, built for people who want to build their blog into their website,
+    not build their website into their blog.</p>
+
+    <p>I'm just getting started, but feel free to poke around. I'm sure that when
+    this starts getting functional, I'll write some setup documentation here. And
+    try the specs, they're fresh!</p>
+
+    <h2>Dependencies</h2>
+
+    <p>Some day, Governor will be somewhat independent, but for now, there are some
+    explicit and implicit dependencies. There's the obvious hard dependency on
+    Rails, but the following implicit dependencies exist at the moment:</p>
+
+    <ul>
+    <li>ActiveRecord</li>
+    <li><a href="https://github.com/mislav/will_paginate">will_paginate</a></li>
+    <li><a href="https://github.com/plataformatec/devise">Devise</a></li>
+    </ul>
+
+    <p>At some point (at least by v1.0), these dependencies will be removed. Sorry
+    about the meantime.</p>
+
+    <h2>Setting Up</h2>
+
+    <p>Governor is a gem, so the first thing to do is to add Governor to your
+    Gemfile.</p>
+
+    <pre><code>gem 'governor'
+    </code></pre>
+
+    <p>Once you've installed the gem into your app, you need to run the generator:</p>
+
+    <pre><code>rails generate governor:install
+    </code></pre>
+
+    <p>This will add an initializer which allows you some loose configuration of
+    Governor. As Governor grows, the initializer will actually get some teeth. Now
+    you're ready to add a model:</p>
+
+    <pre><code>rails generate governor:create_articles [CLASS_NAME]
+    </code></pre>
+
+    <p><code>CLASS_NAME</code> by default is Article, but feel free to specify something else,
+    like Post, Blog, whatever. This will add a model, migration, and route to your
+    app.</p>
+
+    <h2>Usage</h2>
+
+    <p>Now that you have an article model and a set of routes, you're ready to plug
+    it into your app. I'd recommend running <code>rake routes</code> to see what routes have
+    been added, as they depend on the model name you chose.</p>
+
+    <h2>Authentication/Authorization</h2>
+
+    <p>For now, Governor checks with Devise to make sure someone's logged in before
+    creating an article, and verifies that the logged in user is an article's
+    author before allowing them to edit. You might have your own rules that you'd
+    rather apply. You'll have to wait until a future version if you want something
+    different, sorry.</p>
+
+    <h2>Roadmap</h2>
+
+    <p>Less of a roadmap as a politician's promise of what will exist in future
+    versions of Governor:</p>
+
+    <ul>
+    <li>Strategies to play nice with different authentication/authorization schemes.</li>
+    <li>A fleshed-out Governor plugin API.</li>
+    <li>A few plugins: comments, LiveJournal synchronization, formatting engines,
+    search, permalinks, feeds, and who knows what else.</li>
+    <li>A chicken in every pot and a car in every garage.</li>
+    </ul>
+
+    <p>Until v1.0 (or at least until things start to stabilize), I won't promise
+    anything regarding backwards compatibility. Please let me know if something
+    you were relying on breaks, and I'll do my best to steer you in the right
+    direction or repair functionality.</p>
+
+    <h2>Contributing to Governor</h2>
+
+    <p>Governor is just getting off the ground now, so while there's a lot to
+    implement, the infrastructure might be too shaky to support multiple
+    developers. Still, if you're interested in improving this, let's talk.</p>
+
+    <ul>
+    <li>Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet</li>
+    <li>Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it</li>
+    <li>Fork the project</li>
+    <li>Start a feature/bugfix branch</li>
+    <li>Commit and push until you are happy with your contribution</li>
+    <li>Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.</li>
+    <li>Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.</li>
+    </ul>
+
+    <h2>Copyright</h2>
+
+    <p>Copyright &copy; 2011 Liam Morley. See LICENSE.txt for
+    further details.</p>
+  </body>
+</html>
