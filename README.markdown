@@ -9,9 +9,82 @@ I'm just getting started, but feel free to poke around. I'm sure that when
 this starts getting functional, I'll write some setup documentation here. And
 try the specs, they're fresh!
 
+Dependencies
+------------
+
+Some day, Governor will be somewhat independent, but for now, there are some
+explicit and implicit dependencies. There's the obvious hard dependency on
+Rails, but the following implicit dependencies exist at the moment:
+
+* ActiveRecord
+* [will_paginate](https://github.com/mislav/will_paginate)
+* [Devise](https://github.com/plataformatec/devise)
+
+At some point (at least by v1.0), these dependencies will be removed. Sorry
+about the meantime.
+
+Setting Up
+----------
+
+Governor is a gem, so the first thing to do is to add Governor to your
+Gemfile.
+
+    gem 'governor'
+
+Once you've installed the gem into your app, you need to run the generator:
+
+    rails generate governor:install
+
+This will add an initializer which allows you some loose configuration of
+Governor. As Governor grows, the initializer will actually get some teeth. Now
+you're ready to add a model:
+
+    rails generate governor:create_articles [CLASS_NAME]
+
+`CLASS_NAME` by default is Article, but feel free to specify something else,
+like Post, Blog, whatever. This will add a model, migration, and route to your
+app.
+
+Usage
+-----
+
+Now that you have an article model and a set of routes, you're ready to plug
+it into your app. I'd recommend running `rake routes` to see what routes have
+been added, as they depend on the model name you chose.
+
+Authentication/Authorization
+----------------------------
+
+For now, Governor checks with Devise to make sure someone's logged in before
+creating an article, and verifies that the logged in user is an article's
+author before allowing them to edit. You might have your own rules that you'd
+rather apply. You'll have to wait until a future version if you want something
+different, sorry.
+
+Roadmap
+-------
+
+Less of a roadmap as a politician's promise of what will exist in future
+versions of Governor:
+
+* Strategies to play nice with different authentication/authorization schemes.
+* A fleshed-out Governor plugin API.
+* A few plugins: comments, LiveJournal synchronization, formatting engines,
+  search, permalinks, feeds, and who knows what else.
+* A chicken in every pot and a car in every garage.
+
+Until v1.0 (or at least until things start to stabilize), I won't promise
+anything regarding backwards compatibility. Please let me know if something
+you were relying on breaks, and I'll do my best to steer you in the right
+direction or repair functionality.
+
 Contributing to Governor
 ------------------------
- 
+
+Governor is just getting off the ground now, so while there's a lot to
+implement, the infrastructure might be too shaky to support multiple
+developers. Still, if you're interested in improving this, let's talk.
+
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
 * Fork the project
