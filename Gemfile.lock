@@ -1,7 +1,7 @@
 PATH
   remote: ./
   specs:
-    governor (0.0.0)
+    governor (0.1.0)
       rails (~> 3.0.5)
 
 GEM
