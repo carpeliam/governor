@@ -7,4 +7,5 @@
 <%= link_to 'Back', resources_url %>
 <% if governor_authorized?(:edit, resource) %>
   | <%= link_to 'Edit', edit_resource_url(resource) %>
+  | <%= link_to 'Delete', resource, :method => :delete %>
 <% end %>

@@ -5,6 +5,10 @@ module Governor
         url_for :controller => mapping.controller, :governor_mapping => params[:governor_mapping], :action => 'index'
       end
       
+      def new_resource_url
+        url_for :controller => mapping.controller, :governor_mapping => params[:governor_mapping], :action => 'new'
+      end
+      
       def edit_resource_url(resource)
         url_for :controller => mapping.controller, :governor_mapping => params[:governor_mapping], :action => 'edit', :id => resource.id
       end
