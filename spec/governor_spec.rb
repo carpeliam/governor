@@ -17,9 +17,9 @@ describe Governor do
     %w(new create).each do |action|
       it "should make sure a user is logged in when going to the #{action} page" do
         GOVERNOR_SPEC.expects(:user_signed_in?).returns false
-        Governor.authorized?(nil, action).should be_false
+        Governor.authorized?(GOVERNOR_SPEC, action).should be_false
         GOVERNOR_SPEC.expects(:user_signed_in?).returns true
-        Governor.authorized?(nil, action).should be_true
+        Governor.authorized?(GOVERNOR_SPEC, action).should be_true
       end
     end
     
@@ -27,14 +27,14 @@ describe Governor do
       it "should make sure the current user is the author when going to the #{action} page" do
         article = FakeArticle.new
         GOVERNOR_SPEC.expects(:current_user).returns('milorad')
-        Governor.authorized?(article, action).should be_false
+        Governor.authorized?(GOVERNOR_SPEC, action, article).should be_false
         GOVERNOR_SPEC.expects(:current_user).returns('Rod')
-        Governor.authorized?(article, action).should be_true
+        Governor.authorized?(GOVERNOR_SPEC, action, article).should be_true
       end
     end
     
     it "should raise an exception if any other action is requested" do
-      lambda{Governor.authorized(nil, 'who knows what this is')}.should raise_error
+      lambda{Governor.authorized(GOVERNOR_SPEC, 'who knows what this is')}.should raise_error
     end
   end
 end

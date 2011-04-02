@@ -14,6 +14,7 @@ group :development, :test do
   gem 'will_paginate', '~> 3.0.beta'
   gem 'devise'
   gem 'governor', :path => './'
+  gem 'dynamic_form'
 end
 # group :development do
 #   gem "rspec", "~> 2.3.0"

@@ -4,6 +4,8 @@ require 'governor/article'
 require 'governor/formatters'
 require 'governor/mapping'
 
+require 'governor/controllers/helpers'
+
 require 'rails'
 require 'governor/rails'
 
@@ -24,8 +26,7 @@ module Governor
     @@authz_rules = blk
   end
   
-  def self.authorized?(article, action)
-    @@authz_rules.call(article, action)
+  def self.authorized?(actor, action, article=nil)
+    @@authz_rules.call(actor, action, article)
   end
-  
 end
