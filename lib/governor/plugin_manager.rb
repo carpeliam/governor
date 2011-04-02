@@ -4,9 +4,7 @@ module Governor
     cattr_reader :view_hooks
     
     class << self
-      def initialize
-        @@view_hooks = {}
-      end
+      @@view_hooks = Hash.new []
       
       def register(plugin)
         @@plugins ||= []
@@ -14,7 +12,6 @@ module Governor
       end
       
       def register_partial(where, partial_path)
-        @@view_hooks ||= {}
         @@view_hooks[where] ||= []
         @@view_hooks[where] << partial_path
       end

@@ -10,6 +10,8 @@ gem 'sqlite3'
 gem 'devise'
 gem 'governor', :path => '../..'
 
+gem 'dynamic_form'
+
 gem 'will_paginate', '~> 3.0.beta'
 
 # Use unicorn as the web server

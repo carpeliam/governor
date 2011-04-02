@@ -1,11 +1,13 @@
 require 'spec_helper'
 
-# we're going to need 'self' later
-ARTICLES_CONTROLLER_SPEC = self
-
 module Governor
   describe ArticlesController do
-    before(:each) { @article = Factory(:article) }
+    include Devise::TestHelpers
+    
+    before(:each) do
+      @user = Factory(:user)
+      @article = Factory(:article, :author => @user)
+    end
     context "#index" do
       it "assigns the correct instance variable" do
         get :index, :governor_mapping => :articles
@@ -15,6 +17,7 @@ module Governor
     
     context "#new" do
       it "assigns the correct instance variable" do
+        sign_in @user
         get :new, :governor_mapping => :articles
         assigns[:article].should be_a ::Article
         assigns[:article].attributes.should == ::Article.new.attributes
@@ -32,19 +35,17 @@ module Governor
     
     context "#create" do
       it "creates a new instance of Article" do
-        # ARTICLES_CONTROLLER_SPEC.expects(:user_signed_in?).returns true
-        author = Factory(:user)
-        ARTICLES_CONTROLLER_SPEC.expects(:current_user).returns author
+        sign_in @user
         post :create, :governor_mapping => :articles
         assigns[:article].should be_a ::Article
         assigns[:article].should_not be_a_new_record
-        assigns[:article].author.should == author
-        pending "check authz"
+        assigns[:article].author.should == @user
       end
     end
     
     context "#update" do
       it "updates the article" do
+        sign_in @user
         put :update, :governor_mapping => :articles, :id => @article.id, :article => {:title => 'I am awesome, you are awesome'}
         assigns[:article].title.should == 'I am awesome, you are awesome'
       end
@@ -52,6 +53,7 @@ module Governor
     
     context "#destroy" do
       it "deletes the article" do
+        sign_in @user
         delete :destroy, :governor_mapping => :articles, :id => @article.id
         assigns[:article].should == @article
         assigns[:article].should be_destroyed
