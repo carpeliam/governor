@@ -4,9 +4,17 @@ module Governor
       def resources_url
         url_for :controller => mapping.controller, :governor_mapping => params[:governor_mapping], :action => 'index'
       end
+      
+      def edit_resource_url(resource)
+        url_for :controller => mapping.controller, :governor_mapping => params[:governor_mapping], :action => 'edit', :id => resource.id
+      end
 
       def resource
         instance_variable_get("@#{mapping.singular}")
+      end
+      
+      def resource_sym
+        mapping.singular
       end
 
       def resources

@@ -1,8 +1,10 @@
 class Governor::ArticlesController < ApplicationController
-  include ::Governor::Controllers::Helpers
+  include Governor::Controllers::Helpers
   before_filter :init_resource, :only => [:show, :edit, :update, :destroy]
   before_filter :authorize_governor!, :only => [:new, :edit, :create, :update, :destroy]
   helper :governor
+  helper Governor::Controllers::Helpers
+  
   # GET /articles
   # GET /articles.xml
   def index

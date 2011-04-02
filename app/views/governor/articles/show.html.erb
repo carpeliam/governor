@@ -1,7 +1,10 @@
 <div id="blog">
-	<div class="articles">
-	   <%= render @article %>
-	</div>
-    <%= render_plugin_partial('after_article_on_article_page', :locals => {:article => @article}) %>
+  <div class="articles">
+     <%= render resource %>
+  </div>
+    <%= render_plugin_partial('after_article_on_article_page', :locals => {:article => resource}) %>
 </div>
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Back', resources_url %>
+<% if governor_authorized?(:edit, resource) %>
+  | <%= link_to 'Edit', edit_resource_url(resource) %>
+<% end %>

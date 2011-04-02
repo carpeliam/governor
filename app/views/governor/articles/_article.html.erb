@@ -1,11 +1,11 @@
-<h1><%= link_to_unless_current article.title, article %></h1>
+<h1><%= link_to_unless_current resource.title, resource %></h1>
 <div class='subtitle'>
   <div class='desc'>
-    <%=h article.description %>
-  <%= render_plugin_partial('after_desc', :locals => {:article => article}) %>
+    <%= resource.description %>
+  <%= render_plugin_partial('after_desc', :locals => {:article => resource}) %>
   </div>
   <div class='date'>
-    posted <%= show_time_ago article.created_at %>
+    posted <%= show_time_ago resource.created_at %>
   </div>
 </div>
-<%= Governor::Formatters.format_article article %>
+<%= Governor::Formatters.format_article resource %>

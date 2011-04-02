@@ -1,4 +1,6 @@
-<%= form_for @article do |f| %>
+<%= error_messages_for resource_sym %>
+
+<%= form_for resource do |f| %>
   <p>
     <b><%= f.label :title %></b><br>
     <%= f.text_field :title %>

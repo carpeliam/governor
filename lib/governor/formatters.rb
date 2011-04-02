@@ -5,7 +5,7 @@ module Governor
       ##
       # This registers a block to format article content
       def register_formatter(name, &block)
-        @formatters ||= {"default" => default_formatter}
+        @formatters ||= {'default' => default_formatter}
         raise "Formatter `#{name}` already registered!" unless @formatters[name].nil?
         @formatters[name] = block
       end
@@ -13,16 +13,16 @@ module Governor
       ##
       # This returns an array of available formatters that have been registered
       def available_formatters
-        @formatters ||= {"default" => default_formatter}
+        @formatters ||= {'default' => default_formatter}
         return @formatters
       end
 
       ##
       # This returns a default formatter used for replacing line breaks within text
-      # This is the only formatter included within Blugg
+      # This is the only formatter included within Governor
       def default_formatter
         Proc.new do |text|
-          text.gsub("\r\n", "\n").gsub("\n", "<br />")
+          text.gsub("\r\n", "\n").gsub("\n", '<br>')
         end
       end
 
@@ -35,8 +35,8 @@ module Governor
       ##
       # This performs the requested formatting, returning the formatted text
       def format_text(formatter, text)
-        formatter = "default" unless available_formatters.include?(formatter)
-        @formatters[formatter].call(text)
+        formatter = 'default' unless available_formatters.include?(formatter)
+        @formatters[formatter].call(text).html_safe
       end
     end
   end
