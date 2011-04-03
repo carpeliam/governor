@@ -22,14 +22,9 @@
 
     <h2>Dependencies</h2>
 
-    <p>Some day, Governor will be somewhat independent, but for now, there are some
-    explicit and implicit dependencies. There's the obvious hard dependency on
-    Rails, but the following implicit dependencies exist at the moment:</p>
-
     <ul>
     <li>ActiveRecord</li>
     <li><a href="https://github.com/mislav/will_paginate">will_paginate</a></li>
-    <li><a href="https://github.com/plataformatec/devise">Devise</a></li>
     </ul>
 
     <p>At some point (at least by v1.0), these dependencies will be removed. Sorry
@@ -64,6 +59,10 @@
     <p>Now that you have an article model and a set of routes, you're ready to plug
     it into your app. I'd recommend running <code>rake routes</code> to see what routes have
     been added, as they depend on the model name you chose.</p>
+
+    <p>The Governor initialization will check if Devise is installed, and will try to
+    Do The Right Thing if it is. If not, it'll yell at you, so be sure to set up
+    your authorization rules in this file.</p>
 
     <h2>Authentication/Authorization</h2>
 
