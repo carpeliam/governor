@@ -111,7 +111,7 @@ Gem::Specification.new do |s|
     "spec/rails_app/vendor/plugins/.gitkeep",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/carpeliam/governor}
+  s.homepage = %q{http://carpeliam.github.com/governor}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
