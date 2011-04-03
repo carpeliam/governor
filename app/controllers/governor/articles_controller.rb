@@ -43,7 +43,7 @@ class Governor::ArticlesController < ApplicationController
   # POST /articles.xml
   def create
     set_resource model_class.new(params[mapping.singular])
-    resource.author = GOVERNOR_AUTHOR.call(self)
+    resource.author = the_governor
 
     respond_to do |format|
       if resource.save

@@ -45,6 +45,10 @@ module Governor
       def init_resource
         set_resource model_class.find(params[:id])
       end
+      
+      def the_governor
+        instance_eval &GOVERNOR_AUTHOR
+      end
 
       def authorize_governor!
         if defined?(resource)
@@ -55,7 +59,7 @@ module Governor
       end
       
       def governor_authorized?(action, article=nil)
-        Governor.authorized?(self, action, article)
+        instance_exec(action, article, &Governor.authorization_rules)
       end
     end
   end

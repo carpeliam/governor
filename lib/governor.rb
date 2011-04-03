@@ -12,21 +12,13 @@ require 'governor/rails'
 
 module Governor
   
-  mattr_accessor :resources
+  mattr_accessor :resources, :authorization_rules
   @@resources = {}
   def self.map(resource, options = {})
     self.resources[resource] = Governor::Mapping.new(resource, options)
   end
   
-  def self.setup
-    yield self
-  end
-  
   def self.authorize_if(&blk)
-    @@authz_rules = blk
-  end
-  
-  def self.authorized?(actor, action, article=nil)
-    @@authz_rules.call(actor, action, article)
+    @@authorization_rules = blk
   end
 end
