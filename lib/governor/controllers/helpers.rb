@@ -47,14 +47,14 @@ module Governor
       end
       
       def the_governor
-        instance_eval &GOVERNOR_AUTHOR
+        instance_eval &Governor.author
       end
 
       def authorize_governor!
         if defined?(resource)
           redirect_to root_path unless governor_authorized?(action_name, resource)
         else
-          send("authenticate_#{Devise.default_scope}!") unless governor_authorized?(action_name)
+          instance_eval(&Governor.if_not_allowed) unless governor_authorized?(action_name)
         end
       end
       

@@ -12,7 +12,8 @@ require 'governor/rails'
 
 module Governor
   
-  mattr_accessor :resources, :authorization_rules
+  mattr_reader :resources, :authorization_rules
+  mattr_accessor :if_not_allowed, :author
   @@resources = {}
   def self.map(resource, options = {})
     self.resources[resource] = Governor::Mapping.new(resource, options)
