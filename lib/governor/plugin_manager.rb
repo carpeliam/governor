@@ -5,9 +5,9 @@ module Governor
     
     class << self
       @@view_hooks = Hash.new []
+      @@plugins = []
       
       def register(plugin)
-        @@plugins ||= []
         @@plugins << plugin
       end
       
