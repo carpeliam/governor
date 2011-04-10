@@ -4,3 +4,9 @@ log/*.log
 tmp/
 .DS_Store
 pkg/
+
+# useful for running local rails app
+config/application.rb
+config/boot.rb
+config/database.yml
+config/environment.rb
