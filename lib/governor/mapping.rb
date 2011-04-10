@@ -16,17 +16,14 @@ module Governor
       @controller = options[:controller] || 'governor/articles'
     end
     
-    def fullpath
-      "#{@path_prefix}/#{@path}".squeeze("/")
-    end
-    
+    # Provides the resource class.
     def to
       @ref.get
     end
     
+    # Presents a human-readable identifier of the resource type.
     def humanize
       @singular.to_s.humanize
     end
-    
   end
 end

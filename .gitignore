@@ -4,6 +4,7 @@ log/*.log
 tmp/
 .DS_Store
 pkg/
+rdoc/
 
 # useful for running local rails app
 config/application.rb

@@ -1,7 +1,6 @@
-Governor
-========
+= Governor
 
-**Governor** (named after Rod Blagojevich) is the pluggable blogging platform
+*Governor* (named after Rod Blagojevich) is the pluggable blogging platform
 for Rails, built for people who want to build their blog into their website,
 not build their website into their blog.
 
@@ -9,17 +8,15 @@ I'm just getting started, but feel free to poke around. I'm sure that when
 this starts getting functional, I'll write some setup documentation here. And
 try the specs, they're fresh!
 
-Dependencies
-------------
+== Dependencies
 
 * ActiveRecord
-* [will_paginate](https://github.com/mislav/will_paginate)
+* will_paginate[https://github.com/mislav/will_paginate]
 
 At some point (at least by v1.0), these dependencies will be removed. Sorry
 about the meantime.
 
-Setting Up
-----------
+== Setting Up
 
 Governor is a gem, so the first thing to do is to add Governor to your
 Gemfile.
@@ -40,8 +37,7 @@ you're ready to add a model:
 like Post, Blog, whatever. This will add a model, migration, and route to your
 app.
 
-Usage
------
+== Usage
 
 Now that you have an article model and a set of routes, you're ready to plug
 it into your app. I'd recommend running `rake routes` to see what routes have
@@ -51,8 +47,7 @@ The Governor initialization will check if Devise is installed, and will try to
 Do The Right Thing if it is. If not, it'll yell at you, so be sure to set up
 your authorization rules in this file.
 
-Authentication/Authorization
-----------------------------
+== Authentication/Authorization
 
 For now, Governor checks with Devise to make sure someone's logged in before
 creating an article, and verifies that the logged in user is an article's
@@ -60,8 +55,7 @@ author before allowing them to edit. You might have your own rules that you'd
 rather apply. You'll have to wait until a future version if you want something
 different, sorry.
 
-Roadmap
--------
+== Roadmap
 
 Less of a roadmap as a politician's promise of what will exist in future
 versions of Governor:
@@ -77,8 +71,7 @@ anything regarding backwards compatibility. Please let me know if something
 you were relying on breaks, and I'll do my best to steer you in the right
 direction or repair functionality.
 
-Contributing to Governor
-------------------------
+== Contributing to Governor
 
 Governor is just getting off the ground now, so while there's a lot to
 implement, the infrastructure might be too shaky to support multiple
@@ -92,9 +85,8 @@ developers. Still, if you're interested in improving this, let's talk.
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
-Copyright
----------
+== Copyright
 
-Copyright &copy; 2011 Liam Morley. See LICENSE.txt for
+Copyright (C) 2011 Liam Morley. See LICENSE.txt for
 further details.
 

@@ -1,11 +1,17 @@
 module Governor
+  # Include this module into any class that will represent a blog article
+  # post.
   module Article
-    def self.included(base)
+    def self.included(base) #:nodoc:
       base.belongs_to :author, :polymorphic => true
       Governor::PluginManager.resources(:child_resources).each_key do |resource|
         base.has_many resource
       end
       
+      # Will retrieve all of the articles with a given year, month, or day. If
+      # day is not specified, it will find all of the posts for a given month;
+      # if month is not specified, then it will find all of the posts for a
+      # given year. Specifying a page will work with will_paginate.
       def base.find_all_by_date(year, month = nil, day = nil, page = 1)
         from, to = self.time_delta(year, month, day)
         conditions = ['created_at BETWEEN ? AND ?', from, to]

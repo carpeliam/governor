@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.email = %q{liam@carpeliam.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.markdown"
+    "README.rdoc"
   ]
   s.files = [
     ".document",
@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.markdown",
+    "README.rdoc",
     "Rakefile",
     "VERSION",
     "app/controllers/governor/articles_controller.rb",
@@ -113,7 +113,7 @@ Gem::Specification.new do |s|
     "spec/rails_app/vendor/plugins/.gitkeep",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/carpeliam/governor}
+  s.homepage = %q{http://carpeliam.github.com/governor}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
