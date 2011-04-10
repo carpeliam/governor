@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{governor}
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Liam Morley"]
-  s.date = %q{2011-04-02}
+  s.date = %q{2011-04-10}
   s.description = %q{Because Blogojevich would be too tough to remember. It's a pluggable blogging system for Rails 3.}
   s.email = %q{liam@carpeliam.com}
   s.extra_rdoc_files = [
@@ -53,9 +53,11 @@ Gem::Specification.new do |s|
     "lib/governor/rails/routes.rb",
     "lib/tasks/.gitkeep",
     "script/rails",
+    "spec/action_dispatch/routing/mapper_spec.rb",
     "spec/controllers/governor/articles_controller_spec.rb",
     "spec/governor/article_spec.rb",
     "spec/governor/plugin_manager_spec.rb",
+    "spec/governor/plugin_spec.rb",
     "spec/governor_spec.rb",
     "spec/rails_app/.gitignore",
     "spec/rails_app/Gemfile",
@@ -111,15 +113,17 @@ Gem::Specification.new do |s|
     "spec/rails_app/vendor/plugins/.gitkeep",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://carpeliam.github.com/governor}
+  s.homepage = %q{http://github.com/carpeliam/governor}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
   s.summary = %q{A pluggable blogging system for Rails 3.}
   s.test_files = [
+    "spec/action_dispatch/routing/mapper_spec.rb",
     "spec/controllers/governor/articles_controller_spec.rb",
     "spec/governor/article_spec.rb",
     "spec/governor/plugin_manager_spec.rb",
+    "spec/governor/plugin_spec.rb",
     "spec/governor_spec.rb",
     "spec/rails_app/app/controllers/application_controller.rb",
     "spec/rails_app/app/controllers/home_controller.rb",
