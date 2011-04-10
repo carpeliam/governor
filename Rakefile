@@ -13,7 +13,7 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "governor"
-  gem.homepage = "http://github.com/carpeliam/governor"
+  gem.homepage = "http://carpeliam.github.com/governor"
   gem.license = "MIT"
   gem.summary = %Q{A pluggable blogging system for Rails 3.}
   gem.description = %Q{Because Blogojevich would be too tough to remember. It's a pluggable blogging system for Rails 3.}
