@@ -114,6 +114,7 @@ module Governor
           assigns[:article].should == @article
           assigns[:article].should be_destroyed
           ::Article.count.should == 0
+          response.should redirect_to(articles_path)
         end
       end
     end

@@ -2,6 +2,9 @@ module Governor
   module Article
     def self.included(base)
       base.belongs_to :author, :polymorphic => true
+      Governor::PluginManager.resources(:child_resources).each_key do |resource|
+        base.has_many resource
+      end
       
       def base.find_all_by_date(year, month = nil, day = nil, page = 1)
         from, to = self.time_delta(year, month, day)

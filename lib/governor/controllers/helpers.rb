@@ -1,18 +1,6 @@
 module Governor
   module Controllers
     module Helpers
-      def resources_url
-        url_for :controller => mapping.controller, :governor_mapping => params[:governor_mapping], :action => 'index'
-      end
-      
-      def new_resource_url
-        url_for :controller => mapping.controller, :governor_mapping => params[:governor_mapping], :action => 'new'
-      end
-      
-      def edit_resource_url(resource)
-        url_for :controller => mapping.controller, :governor_mapping => params[:governor_mapping], :action => 'edit', :id => resource.id
-      end
-
       def resource
         instance_variable_get("@#{mapping.singular}")
       end
@@ -43,11 +31,15 @@ module Governor
       end
 
       def init_resource
-        set_resource model_class.find(params[:id])
+        set_resource model_class.find(params["#{mapping.singular}_id"] || params[:id])
       end
       
       def the_governor
-        instance_eval &Governor.author
+        instance_eval(&Governor.author)
+      end
+      
+      def governor_logged_in?
+        the_governor.present?
       end
 
       def authorize_governor!

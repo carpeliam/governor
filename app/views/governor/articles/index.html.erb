@@ -3,4 +3,4 @@
   <%= link_to resource.title, resource %><br>
 <% end %>
 
-<p><%= link_to 'New', new_resource_url %></p>
+<p><%= link_to 'New', polymorphic_path(mapping.singular, :action => :new) %></p>

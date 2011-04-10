@@ -4,16 +4,14 @@ module Governor
     cattr_reader :view_hooks
     
     class << self
-      @@view_hooks = Hash.new []
       @@plugins = []
       
-      def register(plugin)
-        @@plugins << plugin
+      def register(*plugins)
+        @@plugins += plugins
       end
       
-      def register_partial(where, partial_path)
-        @@view_hooks[where] ||= []
-        @@view_hooks[where] << partial_path
+      def resources(name)
+        @@plugins.map{|p| p.resources[name] }.compact.reduce({}, :merge)
       end
     end
   end

@@ -1,13 +1,17 @@
 module GovernorHelper
   @@months = %w(January February March April May June July August September October November December)
   
+  Governor::PluginManager.plugins.map{|p| p.helpers }.flatten.each do |mod|
+    include mod.constantize # FIXME this feels pretty dirty, there has to be a better way
+  end
+  
   def render_plugin_partial(where, options = {})
-    output = ""
-    Governor::PluginManager.view_hooks[where].each do |f|
-      opts = options.merge( {:file => f} )
+    output = ''
+    Governor::PluginManager.plugins.map{|p| p.partial_for(where) }.compact.each do |partial|
+      opts = options.merge( {:partial => "governor/#{partial}"} )
       output << render(opts)
     end
-    return output
+    return output.html_safe
   end
   
   def get_date_label

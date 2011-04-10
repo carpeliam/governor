@@ -2,7 +2,7 @@
 <div class='subtitle'>
   <div class='desc'>
     <%= resource.description %>
-  <%= render_plugin_partial('after_desc', :locals => {:article => resource}) %>
+    <%= render_plugin_partial(:after_article_description, :locals => {:article => resource}) %>
   </div>
   <div class='date'>
     posted <%= show_time_ago resource.created_at %>

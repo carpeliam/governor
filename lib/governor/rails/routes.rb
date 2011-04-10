@@ -6,9 +6,11 @@ module ActionDispatch::Routing
       resources.each do |resource|
         mapping = Governor.map(resource, options)
         resources mapping.resource, :controller => mapping.controller, :governor_mapping => resource do
-          Governor::PluginManager.plugins.map{|p| p.routes[:child_resources] }.each do |routes|
-            routes.each_pair do |child_resource, options|
-              resources(child_resource, options)
+          Governor::PluginManager.resources(:child_resources).each_pair do |child_resource, options|
+            options = {:module => :governor}.merge options
+            block = options.delete :block
+            resources(child_resource, options) do
+              instance_eval(&block) if block.present?
             end
           end
         end

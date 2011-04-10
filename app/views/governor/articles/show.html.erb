@@ -2,10 +2,12 @@
   <div class="articles">
      <%= render resource %>
   </div>
-    <%= render_plugin_partial('after_article_on_article_page', :locals => {:article => resource}) %>
+  <%= render_plugin_partial(:after_article_whole, :locals => {:article => resource}) %>
 </div>
-<%= link_to 'Back', resources_url %>
+<%= link_to 'Back', polymorphic_path(mapping.plural) %>
 <% if governor_authorized?(:edit, resource) %>
-  | <%= link_to 'Edit', edit_resource_url(resource) %>
+  | <%= link_to 'Edit', polymorphic_path(resource, :action => :edit) %>
+<% end %>
+<% if governor_authorized?(:destroy, resource) %>
   | <%= link_to 'Delete', resource, :method => :delete %>
 <% end %>

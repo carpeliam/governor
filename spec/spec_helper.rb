@@ -19,3 +19,18 @@ Rspec.configure do |config|
   
   config.use_transactional_fixtures = true
 end
+
+# for removing plugins added in a test to make sure they don't bleed over
+module Governor
+  class PluginManager
+    def self.remove_plugin(plugin_or_name)
+      case plugin_or_name
+      when Plugin then return @@plugins.delete(plugin_or_name)
+      else # Plugin Name
+        @@plugins.each do |plugin|
+          return @@plugins.delete(plugin) if plugin.name == plugin_or_name
+        end
+      end
+    end
+  end
+end

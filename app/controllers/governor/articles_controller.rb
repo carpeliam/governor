@@ -3,6 +3,7 @@ class Governor::ArticlesController < ApplicationController
   before_filter :init_resource, :only => [:show, :edit, :update, :destroy]
   before_filter :authorize_governor!, :only => [:new, :edit, :create, :update, :destroy]
   helper :governor
+  
   helper Governor::Controllers::Helpers
   
   # GET /articles
@@ -78,7 +79,7 @@ class Governor::ArticlesController < ApplicationController
     resource.destroy
 
     respond_to do |format|
-      format.html { redirect_to(resources_url) }
+      format.html { redirect_to(polymorphic_path(mapping.plural)) }
       format.xml  { head :ok }
     end
   end

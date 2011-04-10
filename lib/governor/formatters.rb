@@ -22,7 +22,7 @@ module Governor
       # This is the only formatter included within Governor
       def default_formatter
         Proc.new do |text|
-          text.gsub("\r\n", "\n").gsub("\n", '<br>')
+          text.to_s.gsub("\r\n", "\n").gsub("\n", '<br>')
         end
       end
 
