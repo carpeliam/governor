@@ -5,6 +5,7 @@ require 'governor/formatters'
 require 'governor/mapping'
 
 require 'governor/controllers/helpers'
+require 'governor/controllers/methods'
 
 require 'governor/rails'
 

@@ -4,8 +4,8 @@ module Governor
   module Article
     def self.included(base) #:nodoc:
       base.belongs_to :author, :polymorphic => true
-      Governor::PluginManager.resources(:child_resources).each_key do |resource|
-        base.has_many resource
+      Governor::PluginManager.plugins.each do |plugin|
+        plugin.include_in_model(base)
       end
       
       # Will retrieve all of the articles with a given year, month, or day. If

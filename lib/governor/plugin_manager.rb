@@ -18,18 +18,6 @@ module Governor
       def register(*plugins)
         @@plugins += plugins
       end
-      
-      # A convenience method for obtaining the resources for plugins.
-      #
-      # Example:
-      #
-      #     comments = Governor::Plugin.new('comments')
-      #     comments.add_child_resource :comments, :path_names => {:create => 'comment'}
-      #     Governor::PluginManager.register comments
-      #     Governor::PluginManager.resources(:child_resources) # => {:comments => {:create => 'comment'}}
-      def resources(name)
-        @@plugins.map{|p| p.resources[name] }.compact.reduce({}, :merge)
-      end
     end
   end
 end

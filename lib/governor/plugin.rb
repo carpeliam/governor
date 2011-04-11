@@ -1,6 +1,6 @@
 module Governor
   class Plugin
-    attr_reader :name, :migrations, :resources, :helpers
+    attr_reader :name, :migrations, :routes, :resources, :helpers
     def initialize(name)
       @name = name
       @migrations = []
@@ -13,22 +13,22 @@ module Governor
       @migrations << path
     end
     
-    # Adds a nested resource. Any options are passed directly to the router.
-    # Any member or collection routes can be passed in as a block.
+    # Adds routes for articles. These can add member or collection routes to
+    # articles, or even nested resources.
     #
     # Example:
     #
     #     comments = Governor::Plugin.new('comments')
-    #     comments.add_child_resource :comments do
-    #       member do
-    #         put 'mark_spam', 'not_spam'
+    #     comments.set_routes do
+    #       resources :comments do
+    #         member do
+    #           put 'mark_spam', 'not_spam'
+    #         end
     #       end
     #     end
     #
-    def add_child_resource(name, options={}, &block)
-      options[:block] = block if block_given?
-      @resources[:child_resources] ||= {}
-      @resources[:child_resources][name] = options
+    def set_routes(&block)
+      @routes = block
     end
     
     # Specifies that this plugin will display a partial of the given type, at
@@ -46,13 +46,7 @@ module Governor
       @partials[type.to_sym] = path
     end
     
-    # Returns the path associated with the given partial type.
-    #
-    # Example:
-    #
-    #     comments.partial_for(:after_article_whole) # => 'articles/comments'
-    #
-    def partial_for(type)
+    def partial_for(type) #:nodoc:
       @partials[type.to_sym]
     end
     
@@ -67,6 +61,30 @@ module Governor
     #
     def add_helper(mod)
       @helpers << mod
+    end
+    
+    def include_in_model(base) #:nodoc:
+      instance_exec(base, &@model_callback) if @model_callback
+    end
+    
+    # Evaluates the block in the scope of the model. This is the equivalent of
+    # creating a mixin, including it within your article class and
+    # implementing +self.included+.
+    #
+    # Example:
+    #
+    #     thinking_sphinx = Governor::Plugin.new('thinking_sphinx')
+    #     thinking_sphinx.register_model_callback do |base|
+    #       base.define_index do
+    #         indexes title
+    #         indexes description
+    #         indexes post
+    #         has created_at
+    #         set_property :delta => true
+    #       end
+    #     end
+    def register_model_callback(&block)
+      @model_callback = block
     end
   end
 end

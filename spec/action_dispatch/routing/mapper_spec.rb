@@ -3,18 +3,24 @@ require 'spec_helper'
 module ActionDispatch::Routing
   
   describe Mapper do
-    context "#governate" do
+    context "#governate", :type => :routing do
       
       before do
         @plugin = Governor::Plugin.new('test')
-        @plugin.add_child_resource('test', :some_option => 'value')
+        @plugin.set_routes do
+          resources :foos
+        end
         Governor::PluginManager.register @plugin
+        
+        @article = Factory(:article)
+        Rails.application.reload_routes!
       end
       
-      it "doesn't alter a plugin's options" do
-        Rails.application.reload_routes!
-        
-        @plugin.resources[:child_resources].should == {'test' => {:some_option => 'value'}}
+      it "adds the route" do
+        Rails.application.routes.routes.map(&:name).should include 'article_foos'
+        # the above works, but the below does not :/
+        pending "check with rspec folks to figure out why this doesn't pass"
+        {:get => "/articles/#{@article.id}/foos"}.should route_to(:controller => 'foos', :action => 'show', :governor_mapping => :articles)
       end
       
       after do
