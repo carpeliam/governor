@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{governor}
-  s.version = "0.2.1"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Liam Morley"]
-  s.date = %q{2011-04-10}
+  s.date = %q{2011-04-11}
   s.description = %q{Because Blogojevich would be too tough to remember. It's a pluggable blogging system for Rails 3.}
   s.email = %q{liam@carpeliam.com}
   s.extra_rdoc_files = [
@@ -45,6 +45,7 @@ Gem::Specification.new do |s|
     "lib/governor.rb",
     "lib/governor/article.rb",
     "lib/governor/controllers/helpers.rb",
+    "lib/governor/controllers/methods.rb",
     "lib/governor/formatters.rb",
     "lib/governor/mapping.rb",
     "lib/governor/plugin.rb",
