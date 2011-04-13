@@ -4,6 +4,8 @@ module Governor
   module Article
     def self.included(base) #:nodoc:
       base.belongs_to :author, :polymorphic => true
+      base.validates_presence_of :author, :title, :post
+      
       Governor::PluginManager.plugins.each do |plugin|
         plugin.include_in_model(base)
       end

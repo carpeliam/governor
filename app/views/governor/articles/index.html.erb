@@ -1,6 +1,6 @@
-<h1>List</h1>
-<% resources.each do |resource| %>
-  <%= link_to resource.title, resource %><br>
-<% end %>
+<% if resources.blank? %><%= (@blank_msg or "There are no articles for this time period.") %><% end %>
+<%= render :partial => 'article', :collection => resources %>
 
-<p><%= link_to 'New', polymorphic_path(mapping.singular, :action => :new) %></p>
+<p>
+<%= will_paginate resources %>
+</p>
