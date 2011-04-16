@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{governor}
-  s.version = "0.2.3"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Liam Morley"]
-  s.date = %q{2011-04-12}
+  s.date = %q{2011-04-16}
   s.description = %q{Because Blogojevich would be too tough to remember. It's a pluggable blogging system for Rails 3.}
   s.email = %q{liam@carpeliam.com}
   s.extra_rdoc_files = [
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
     "app/helpers/governor_helper.rb",
     "app/views/governor/articles/_article.html.erb",
     "app/views/governor/articles/_form.html.erb",
+    "app/views/governor/articles/_form.html.haml",
     "app/views/governor/articles/edit.html.erb",
     "app/views/governor/articles/index.html.erb",
     "app/views/governor/articles/new.html.erb",
@@ -71,6 +72,7 @@ Gem::Specification.new do |s|
     "spec/rails_app/app/helpers/home_helper.rb",
     "spec/rails_app/app/models/article.rb",
     "spec/rails_app/app/models/user.rb",
+    "spec/rails_app/app/views/governor/articles/index.xml.builder",
     "spec/rails_app/app/views/home/index.html.erb",
     "spec/rails_app/app/views/layouts/application.html.erb",
     "spec/rails_app/config.ru",
@@ -84,6 +86,7 @@ Gem::Specification.new do |s|
     "spec/rails_app/config/initializers/backtrace_silencers.rb",
     "spec/rails_app/config/initializers/devise.rb",
     "spec/rails_app/config/initializers/governor.rb",
+    "spec/rails_app/config/initializers/governor_testing.rb",
     "spec/rails_app/config/initializers/inflections.rb",
     "spec/rails_app/config/initializers/mime_types.rb",
     "spec/rails_app/config/initializers/secret_token.rb",
@@ -141,6 +144,7 @@ Gem::Specification.new do |s|
     "spec/rails_app/config/initializers/backtrace_silencers.rb",
     "spec/rails_app/config/initializers/devise.rb",
     "spec/rails_app/config/initializers/governor.rb",
+    "spec/rails_app/config/initializers/governor_testing.rb",
     "spec/rails_app/config/initializers/inflections.rb",
     "spec/rails_app/config/initializers/mime_types.rb",
     "spec/rails_app/config/initializers/secret_token.rb",
