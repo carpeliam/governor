@@ -12,7 +12,7 @@ module ActionDispatch::Routing
         end
         Governor::PluginManager.register @plugin
         
-        @article = Factory(:article)
+        @article = Factory(:article, :author => Factory(:user))
         Rails.application.reload_routes!
       end
       

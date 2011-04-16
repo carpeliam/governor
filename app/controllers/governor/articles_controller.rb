@@ -7,38 +7,34 @@ class Governor::ArticlesController < ApplicationController
   
   helper Governor::Controllers::Helpers
   
+  respond_to :html
+  Governor::PluginManager.plugins.each do |plugin|
+    plugin.mimes.each{|mimes| respond_to *mimes.dup }
+  end
+  
   # GET /articles
   # GET /articles.xml
   def index
     set_resources model_class.paginate :page => params[:page], :order => 'created_at DESC'
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => resources }
-    end
+    respond_with resources
   end
 
   # GET /articles/1
   # GET /articles/1.xml
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => resource }
-    end
+    respond_with resource
   end
 
   # GET /articles/new
   # GET /articles/new.xml
   def new
     set_resource model_class.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => resource }
-    end
+    respond_with resource
   end
 
   # GET /articles/1/edit
   def edit
+    respond_with resource
   end
 
   # POST /articles
@@ -46,43 +42,27 @@ class Governor::ArticlesController < ApplicationController
   def create
     set_resource model_class.new(params[mapping.singular])
     resource.author = the_governor
-
-    respond_to do |format|
-      if resource.save
-        flash[:notice] = "#{mapping.humanize} was successfully created."
-        format.html { redirect_to(resource) }
-        format.xml  { render :xml => resource, :status => :created, :location => resource }
-      else
-        format.html { render :action => 'new' }
-        format.xml  { render :xml => resource.errors, :status => :unprocessable_entity }
-      end
+    if resource.save
+      flash[:notice] = "#{mapping.humanize} was successfully created."
     end
+    respond_with resource
   end
 
   # PUT /articles/1
   # PUT /articles/1.xml
   def update
-    respond_to do |format|
-      if resource.update_attributes(params[mapping.singular])
-        flash[:notice] = "#{mapping.humanize} was successfully updated."
-        format.html { redirect_to(resource) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => 'edit' }
-        format.xml  { render :xml => resource.errors, :status => :unprocessable_entity }
-      end
+    if resource.update_attributes(params[mapping.singular])
+      flash[:notice] = "#{mapping.humanize} was successfully updated."
     end
+    respond_with resource
   end
 
   # DELETE /articles/1
   # DELETE /articles/1.xml
   def destroy
     resource.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(polymorphic_path(mapping.plural)) }
-      format.xml  { head :ok }
-    end
+    flash[:notice] = "#{mapping.humanize} was successfully updated."
+    respond_with resource
   end
   
   def find_by_date

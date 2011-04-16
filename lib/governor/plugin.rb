@@ -1,12 +1,13 @@
 module Governor
   class Plugin
-    attr_reader :name, :migrations, :routes, :resources, :helpers
+    attr_reader :name, :migrations, :routes, :resources, :helpers, :mimes
     def initialize(name)
       @name = name
       @migrations = []
       @helpers = []
       @resources = {}
       @partials = {}
+      @mimes = []
     end
     
     def add_migration(path)
@@ -85,6 +86,10 @@ module Governor
     #     end
     def register_model_callback(&block)
       @model_callback = block
+    end
+    
+    def responds_to(*mimes)
+      @mimes << mimes
     end
   end
 end

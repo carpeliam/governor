@@ -20,7 +20,7 @@ module ActionDispatch #:nodoc:
           mapping = Governor.map(resource, options)
           resources mapping.resource, :controller => mapping.controller, :governor_mapping => resource do
             Governor::PluginManager.plugins.map{|p| p.routes }.each do |routes|
-              instance_eval(&routes)
+              instance_eval(&routes) if routes.present?
             end
           end
         end

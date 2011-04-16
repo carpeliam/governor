@@ -4,6 +4,37 @@ module Governor
   describe ArticlesController do
     include Devise::TestHelpers
     
+    context "which has a plugin with a registered mime response" do
+      # not sure how to add something before the controller is loaded, so I
+      # added an initializer which adds a plugin that registers a type. See
+      # 'governor_testing' in the rails_app/config/initializers directory:
+      #
+      #     plugin = Governor::Plugin.new('xml support')
+      #     plugin.responds_to :xml, :only => [:index]
+      #     Governor::PluginManager.register plugin
+      #
+      render_views
+      it "responds to standard html" do
+        get :index, :governor_mapping => :articles
+        assigns[:articles].should == [@article]
+        response.status.should == 200 # :success
+      end
+      it "doesn't respond to JSON" do
+        get :index, :governor_mapping => :articles, :format => :json
+        response.status.should == 406 # :not_acceptable
+      end
+      it "responds to index.xml because the plugin added it" do
+        get :index, :governor_mapping => :articles, :format => :xml
+        assigns[:articles].should == [@article]
+        response.status.should == 200 # :success
+        response.body.should =~ /It worked/
+      end
+      it "doesn't respond to show.xml" do
+        get :show, :governor_mapping => :articles, :id => @article.id, :format => :xml
+        response.status.should == 406 # :not_acceptable
+      end
+    end
+    
     before(:each) do
       @user = Factory(:user)
       @article = Factory(:article, :author => @user)
@@ -73,7 +104,7 @@ module Governor
       context "when signed in" do
         before(:each) { sign_in @user }
         it "creates a new article and redirects to its page" do
-          post :create, :governor_mapping => :articles
+          post :create, :governor_mapping => :articles, :article => {:title => 'Want a job?', :post => 'I accept checks'}
           assigns[:article].should be_a ::Article
           assigns[:article].should_not be_a_new_record
           assigns[:article].author.should == @user
