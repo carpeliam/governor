@@ -33,5 +33,9 @@ module Governor
         [from, to]
       end
     end
+    
+    def to_s
+      title
+    end
   end
 end
