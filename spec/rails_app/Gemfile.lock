@@ -1,7 +1,7 @@
 PATH
   remote: ../..
   specs:
-    governor (0.3.0)
+    governor (0.3.1)
       rails (~> 3.0.5)
 
 GEM
@@ -77,7 +77,6 @@ GEM
     tzinfo (0.3.25)
     warden (1.0.3)
       rack (>= 1.0.0)
-    will_paginate (3.0.pre2)
 
 PLATFORMS
   ruby
@@ -88,4 +87,3 @@ DEPENDENCIES
   governor!
   rails (= 3.0.5)
   sqlite3
-  will_paginate (~> 3.0.beta)

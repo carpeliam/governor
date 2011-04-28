@@ -2,5 +2,5 @@
 <%= render :partial => 'article', :collection => resources %>
 
 <p>
-<%= will_paginate resources %>
+<%= will_paginate(resources) if respond_to?(:will_paginate) %>
 </p>

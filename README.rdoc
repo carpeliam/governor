@@ -11,10 +11,9 @@ try the specs, they're fresh!
 == Dependencies
 
 * ActiveRecord
-* will_paginate[https://github.com/mislav/will_paginate]
 
-At some point (at least by v1.0), these dependencies will be removed. Sorry
-about the meantime.
+By 1.0, I'd like to make it possible to use Governor with other ORMs, but I'm
+not sure when that'll be.
 
 == Setting Up
 

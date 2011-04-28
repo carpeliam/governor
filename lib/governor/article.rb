@@ -6,6 +6,11 @@ module Governor
       base.belongs_to :author, :polymorphic => true
       base.validates_presence_of :author, :title, :post
       
+      if defined?(WillPaginate)
+        base.cattr_reader :per_page
+        base.class_eval "@@per_page = 10"
+      end
+      
       Governor::PluginManager.plugins.each do |plugin|
         plugin.include_in_model(base)
       end
@@ -17,7 +22,11 @@ module Governor
       def base.find_all_by_date(year, month = nil, day = nil, page = 1)
         from, to = self.time_delta(year, month, day)
         conditions = ['created_at BETWEEN ? AND ?', from, to]
-        paginate :page => page, :conditions => conditions, :order => 'created_at DESC'
+        if model_class.respond_to?(:paginate)
+          paginate :page => page, :conditions => conditions, :order => 'created_at DESC'
+        else
+          all :conditions => conditions, :order => 'created_at DESC'
+        end
       end
 
       private
