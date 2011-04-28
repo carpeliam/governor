@@ -12,14 +12,8 @@ module GovernorHelper
     return output.html_safe
   end
   
-  def get_date_label
-    if params[:day].present?
-      "#{Date::MONTHNAMES[params[:month].to_i]} #{params[:day]}, #{params[:year]}"
-    elsif params[:month].present?
-      "#{Date::MONTHNAMES[params[:month].to_i]} #{params[:year]}"
-    else
-      params[:year]
-    end
+  def get_date_label(year, month=nil, day=nil)
+    l Date.new(*[year, month, day].compact), :format => "#{'%B ' if month}#{'%d, ' if day}%Y"
   end
 
   def show_time_ago(date)
