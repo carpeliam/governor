@@ -1,6 +1,4 @@
 module GovernorHelper
-  @@months = %w(January February March April May June July August September October November December)
-  
   Governor::PluginManager.plugins.map{|p| p.helpers }.flatten.each do |mod|
     include mod.constantize # FIXME this feels pretty dirty, there has to be a better way
   end
@@ -15,10 +13,10 @@ module GovernorHelper
   end
   
   def get_date_label
-    if not params[:day].nil?
-      "#{@@months[params[:month].to_i - 1]} #{params[:day]}, #{params[:year]}"
-    elsif not params[:month].nil?
-      "#{@@months[params[:month].to_i - 1]} #{params[:year]}"
+    if params[:day].present?
+      "#{Date::MONTHNAMES[params[:month].to_i]} #{params[:day]}, #{params[:year]}"
+    elsif params[:month].present?
+      "#{Date::MONTHNAMES[params[:month].to_i]} #{params[:year]}"
     else
       params[:year]
     end
