@@ -47,7 +47,7 @@ class Governor::ArticlesController < ApplicationController
     set_resource model_class.new(params[mapping.singular])
     resource.author = the_governor
     if resource.save
-      flash[:notice] = "#{mapping.humanize} was successfully created."
+      flash[:notice] = t('governor.article_created', :resource_type => mapping.humanize)
     end
     respond_with resource
   end
@@ -56,7 +56,7 @@ class Governor::ArticlesController < ApplicationController
   # PUT /articles/1.xml
   def update
     if resource.update_attributes(params[mapping.singular])
-      flash[:notice] = "#{mapping.humanize} was successfully updated."
+      flash[:notice] = t('governor.article_updated', :resource_type => mapping.humanize)
     end
     respond_with resource
   end
@@ -65,7 +65,7 @@ class Governor::ArticlesController < ApplicationController
   # DELETE /articles/1.xml
   def destroy
     resource.destroy
-    flash[:notice] = "#{mapping.humanize} was successfully updated."
+    flash[:notice] = t('governor.article_destroyed', :resource_type => mapping.humanize)
     respond_with resource
   end
   

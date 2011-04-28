@@ -109,6 +109,7 @@ module Governor
           assigns[:article].should_not be_a_new_record
           assigns[:article].author.should == @user
           response.should redirect_to(assigns[:article])
+          flash[:notice].should == 'Article was successfully created.'
         end
       end
     end
@@ -126,6 +127,7 @@ module Governor
         it "updates the article" do
           put :update, :governor_mapping => :articles, :id => @article.id, :article => {:title => 'I am awesome, you are awesome'}
           assigns[:article].title.should == 'I am awesome, you are awesome'
+          flash[:notice].should == 'Article was successfully updated.'
         end
       end
     end
@@ -146,6 +148,7 @@ module Governor
           assigns[:article].should be_destroyed
           ::Article.count.should == 0
           response.should redirect_to(articles_path)
+          flash[:notice].should == 'Article was successfully deleted.'
         end
       end
     end
