@@ -2,4 +2,6 @@
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  governor:
+    article_destroyed: "%{resource_type} was successfully deleted, and this is a custom localized message."
   hello: "Hello world"

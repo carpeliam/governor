@@ -148,7 +148,7 @@ module Governor
           assigns[:article].should be_destroyed
           ::Article.count.should == 0
           response.should redirect_to(articles_path)
-          flash[:notice].should == 'Article was successfully deleted.'
+          flash[:notice].should == 'Article was successfully deleted, and this is a custom localized message.'
         end
       end
     end
