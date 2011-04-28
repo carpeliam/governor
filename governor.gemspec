@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{governor}
-  s.version = "0.3.1"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Liam Morley"]
-  s.date = %q{2011-04-24}
+  s.date = %q{2011-04-28}
   s.description = %q{Because Blogojevich would be too tough to remember. It's a pluggable blogging system for Rails 3.}
   s.email = %q{liam@carpeliam.com}
   s.extra_rdoc_files = [
@@ -37,8 +37,8 @@ Gem::Specification.new do |s|
     "config/locales/en.yml",
     "governor.gemspec",
     "lib/generators/USAGE",
+    "lib/generators/governor/configure_generator.rb",
     "lib/generators/governor/create_articles_generator.rb",
-    "lib/generators/governor/install_generator.rb",
     "lib/generators/governor/migrate_generator.rb",
     "lib/generators/governor/templates/governor.rb",
     "lib/generators/governor/templates/migrations/create_articles.rb",
@@ -171,7 +171,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<factory_girl>, ["~> 2.0.0.beta"])
       s.add_development_dependency(%q<factory_girl_rails>, ["~> 1.1.beta"])
       s.add_development_dependency(%q<activerecord-nulldb-adapter>, [">= 0"])
-      s.add_development_dependency(%q<will_paginate>, ["~> 3.0.beta"])
       s.add_development_dependency(%q<devise>, [">= 0"])
       s.add_development_dependency(%q<governor>, [">= 0"])
       s.add_development_dependency(%q<dynamic_form>, [">= 0"])
@@ -184,7 +183,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<factory_girl>, ["~> 2.0.0.beta"])
       s.add_dependency(%q<factory_girl_rails>, ["~> 1.1.beta"])
       s.add_dependency(%q<activerecord-nulldb-adapter>, [">= 0"])
-      s.add_dependency(%q<will_paginate>, ["~> 3.0.beta"])
       s.add_dependency(%q<devise>, [">= 0"])
       s.add_dependency(%q<governor>, [">= 0"])
       s.add_dependency(%q<dynamic_form>, [">= 0"])
@@ -198,7 +196,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<factory_girl>, ["~> 2.0.0.beta"])
     s.add_dependency(%q<factory_girl_rails>, ["~> 1.1.beta"])
     s.add_dependency(%q<activerecord-nulldb-adapter>, [">= 0"])
-    s.add_dependency(%q<will_paginate>, ["~> 3.0.beta"])
     s.add_dependency(%q<devise>, [">= 0"])
     s.add_dependency(%q<governor>, [">= 0"])
     s.add_dependency(%q<dynamic_form>, [">= 0"])
