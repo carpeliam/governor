@@ -1,7 +1,7 @@
 PATH
   remote: ./
   specs:
-    governor (0.3.1)
+    governor (0.4.0)
       rails (~> 3.0.5)
 
 GEM
@@ -63,6 +63,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.16)
     mocha (0.9.12)
+    nokogiri (1.4.4)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -103,6 +104,10 @@ GEM
     tzinfo (0.3.24)
     warden (1.0.3)
       rack (>= 1.0.0)
+    webrat (0.7.3)
+      nokogiri (>= 1.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5.3)
 
 PLATFORMS
   ruby
@@ -119,3 +124,4 @@ DEPENDENCIES
   rails (~> 3.0.5)
   rspec-rails
   sqlite3
+  webrat

@@ -8,6 +8,7 @@
 </head>
 <body>
 <% if user_signed_in? %>
+  <%= governor_header %>
   <%= link_to 'new article', new_article_path %> |
   <%= link_to 'sign out', destroy_user_session_path %>
 <% else %>

@@ -7,6 +7,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'mocha'
+  gem 'webrat'
   gem 'factory_girl', '~> 2.0.0.beta'
   gem 'factory_girl_rails', '~> 1.1.beta'
   gem 'activerecord-nulldb-adapter'
