@@ -4,3 +4,6 @@ en:
     article_updated: "%{resource_type} was successfully updated."
     article_destroyed: "%{resource_type} was successfully deleted."
     unauthorized_edit: "You're not allowed to edit this %{resource_type}."
+    
+    all_articles: "%{resource_type}"
+    new_article: "New %{resource_type}"

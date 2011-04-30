@@ -1,10 +1,9 @@
 module Governor
   class Plugin
-    attr_reader :name, :migrations, :routes, :resources, :helpers, :mimes
+    attr_reader :name, :migrations, :routes, :resources, :mimes, :navigation_hook
     def initialize(name)
       @name = name
       @migrations = []
-      @helpers = []
       @resources = {}
       @partials = {}
       @mimes = []
@@ -51,19 +50,6 @@ module Governor
       @partials[type.to_sym]
     end
     
-    # Associates a helper for this plugin, to be included into the controller
-    # and view.
-    #
-    # Currently this requires a string. This will be refactored soon.
-    #
-    # Example:
-    #
-    #     comments.add_helper "GovernorCommentsHelper"
-    #
-    def add_helper(mod)
-      @helpers << mod
-    end
-    
     def include_in_model(base) #:nodoc:
       instance_exec(base, &@model_callback) if @model_callback
     end
@@ -88,8 +74,40 @@ module Governor
       @model_callback = block
     end
     
+    # Defines mime types that this plugin responds to. These mime types will
+    # be passed on to the controller.
+    #
+    # Example:
+    #
+    #    plugin.responds_to :xml, :json
+    #
+    # Specifies that this plugin can deliver a view for XML documents as well
+    # as JSON.
+    #
+    # Any arguments that can be passed to +respond_to+ in the controller can
+    # be passed here:
+    #
+    #     plugin.responds_to :atom, :only => :index
+    #
+    # This specifies that the :index action responds to :atom, but no others.
     def responds_to(*mimes)
       @mimes << mimes
+    end
+    
+    # Adds the given block to the Governor navigation header in
+    # GovernorApplicationHeader#governor_header.
+    #
+    # Example:
+    #
+    #     plugin.add_to_navigation do
+    #       concat(link_to("Rod's favorite movie?", 'http://www.imdb.com/title/tt0031679/'))
+    #     end
+    #
+    # This would add a link to Rod's favorite movie in the Governor navigation
+    # header. You're responsible for wrapping any content you want included
+    # with concat().
+    def add_to_navigation(&block)
+      @navigation_hook = block
     end
   end
 end

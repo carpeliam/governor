@@ -1,8 +1,4 @@
 module GovernorHelper
-  Governor::PluginManager.plugins.map{|p| p.helpers }.flatten.each do |mod|
-    include mod.constantize # FIXME this feels pretty dirty, there has to be a better way
-  end
-  
   def render_plugin_partial(where, options = {})
     output = ''
     Governor::PluginManager.plugins.map{|p| p.partial_for(where) }.compact.each do |partial|
