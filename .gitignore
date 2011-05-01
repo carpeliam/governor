@@ -5,6 +5,7 @@ tmp/
 .DS_Store
 pkg/
 rdoc/
+coverage/
 
 # useful for running local rails app
 config/application.rb
