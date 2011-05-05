@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Liam Morley"]
-  s.date = %q{2011-04-28}
+  s.date = %q{2011-05-04}
   s.description = %q{Because Blogojevich would be too tough to remember. It's a pluggable blogging system for Rails 3.}
   s.email = %q{liam@carpeliam.com}
   s.extra_rdoc_files = [
@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "app/controllers/governor/articles_controller.rb",
+    "app/helpers/governor_application_helper.rb",
     "app/helpers/governor_helper.rb",
     "app/views/governor/articles/_article.html.erb",
     "app/views/governor/articles/_form.html.erb",
@@ -61,6 +62,7 @@ Gem::Specification.new do |s|
     "spec/governor/plugin_manager_spec.rb",
     "spec/governor/plugin_spec.rb",
     "spec/governor_spec.rb",
+    "spec/helpers/governor_application_helper_spec.rb",
     "spec/rails_app/.gitignore",
     "spec/rails_app/Gemfile",
     "spec/rails_app/Gemfile.lock",
@@ -115,7 +117,9 @@ Gem::Specification.new do |s|
     "spec/rails_app/script/rails",
     "spec/rails_app/spec/factories.rb",
     "spec/rails_app/vendor/plugins/.gitkeep",
-    "spec/spec_helper.rb"
+    "spec/spec_helper.rb",
+    "spec/views/governor/articles/index.html.erb_spec.rb",
+    "spec/views/layouts/application.html.erb_spec.rb"
   ]
   s.homepage = %q{http://carpeliam.github.com/governor}
   s.licenses = ["MIT"]
@@ -129,6 +133,7 @@ Gem::Specification.new do |s|
     "spec/governor/plugin_manager_spec.rb",
     "spec/governor/plugin_spec.rb",
     "spec/governor_spec.rb",
+    "spec/helpers/governor_application_helper_spec.rb",
     "spec/rails_app/app/controllers/application_controller.rb",
     "spec/rails_app/app/controllers/home_controller.rb",
     "spec/rails_app/app/helpers/application_helper.rb",
@@ -155,7 +160,9 @@ Gem::Specification.new do |s|
     "spec/rails_app/db/schema.rb",
     "spec/rails_app/db/seeds.rb",
     "spec/rails_app/spec/factories.rb",
-    "spec/spec_helper.rb"
+    "spec/spec_helper.rb",
+    "spec/views/governor/articles/index.html.erb_spec.rb",
+    "spec/views/layouts/application.html.erb_spec.rb"
   ]
 
   if s.respond_to? :specification_version then
@@ -167,7 +174,9 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.2"])
       s.add_development_dependency(%q<sqlite3>, [">= 0"])
       s.add_development_dependency(%q<rspec-rails>, [">= 0"])
+      s.add_development_dependency(%q<rcov>, [">= 0"])
       s.add_development_dependency(%q<mocha>, [">= 0"])
+      s.add_development_dependency(%q<webrat>, [">= 0"])
       s.add_development_dependency(%q<factory_girl>, ["~> 2.0.0.beta"])
       s.add_development_dependency(%q<factory_girl_rails>, ["~> 1.1.beta"])
       s.add_development_dependency(%q<activerecord-nulldb-adapter>, [">= 0"])
@@ -179,7 +188,9 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
       s.add_dependency(%q<sqlite3>, [">= 0"])
       s.add_dependency(%q<rspec-rails>, [">= 0"])
+      s.add_dependency(%q<rcov>, [">= 0"])
       s.add_dependency(%q<mocha>, [">= 0"])
+      s.add_dependency(%q<webrat>, [">= 0"])
       s.add_dependency(%q<factory_girl>, ["~> 2.0.0.beta"])
       s.add_dependency(%q<factory_girl_rails>, ["~> 1.1.beta"])
       s.add_dependency(%q<activerecord-nulldb-adapter>, [">= 0"])
@@ -192,7 +203,9 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
     s.add_dependency(%q<sqlite3>, [">= 0"])
     s.add_dependency(%q<rspec-rails>, [">= 0"])
+    s.add_dependency(%q<rcov>, [">= 0"])
     s.add_dependency(%q<mocha>, [">= 0"])
+    s.add_dependency(%q<webrat>, [">= 0"])
     s.add_dependency(%q<factory_girl>, ["~> 2.0.0.beta"])
     s.add_dependency(%q<factory_girl_rails>, ["~> 1.1.beta"])
     s.add_dependency(%q<activerecord-nulldb-adapter>, [">= 0"])
