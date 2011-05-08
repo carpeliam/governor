@@ -9,3 +9,4 @@
   </div>
 </div>
 <%= Governor::Formatters.format_article article %>
+<%= render_plugin_partial(:after_article_summary, :locals => {:article => article}) unless current_page?(article) %>
