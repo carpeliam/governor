@@ -1,7 +1,9 @@
 module GovernorHelper
   def render_plugin_partial(where, options = {})
     output = ''
-    Governor::PluginManager.plugins.map{|p| p.partial_for(where) }.compact.each do |partial|
+    partials = Governor::ViewManager.flashes.delete(where) || []
+    partials |= Governor::PluginManager.plugins.map{|p| p.partial_for(where) }.compact
+    partials.each do |partial|
       opts = options.merge( {:partial => "governor/#{partial}"} )
       output << render(opts)
     end
