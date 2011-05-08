@@ -1,5 +1,6 @@
 require 'governor/plugin'
 require 'governor/plugin_manager'
+require 'governor/view_manager'
 require 'governor/article'
 require 'governor/formatters'
 require 'governor/mapping'
