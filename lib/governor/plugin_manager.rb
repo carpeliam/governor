@@ -1,7 +1,6 @@
 module Governor
   class PluginManager
     cattr_reader :plugins
-    cattr_reader :view_hooks
     
     class << self
       @@plugins = []
