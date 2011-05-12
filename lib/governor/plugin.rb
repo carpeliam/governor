@@ -54,6 +54,10 @@ module Governor
       instance_exec(base, &@model_callback) if @model_callback
     end
     
+    def include_in_controller(base) #:nodoc:
+      instance_exec(base, &@controller_callback) if @controller_callback
+    end
+    
     # Evaluates the block in the scope of the model. This is the equivalent of
     # creating a mixin, including it within your article class and
     # implementing +self.included+.
@@ -72,6 +76,10 @@ module Governor
     #     end
     def register_model_callback(&block)
       @model_callback = block
+    end
+    
+    def register_controller_callback(&block)
+      @controller_callback = block
     end
     
     # Defines mime types that this plugin responds to. These mime types will
