@@ -86,6 +86,6 @@ developers. Still, if you're interested in improving this, let's talk.
 
 == Copyright
 
-Copyright (C) 2011 Liam Morley. See LICENSE.txt for
+Copyright (c) 2011 Liam Morley. See LICENSE.txt for
 further details.
 
