@@ -1,12 +1,16 @@
-<h1><%= link_to_unless_current article.title, article %></h1>
-<div class='subtitle'>
-  <div class='desc'>
-    <%= article.description %>
-    <%= render_plugin_partial(:after_article_description, :locals => {:article => article}) %>
-  </div>
-  <div class='date'>
-    posted <%= show_time_ago article.created_at %>
-  </div>
-</div>
-<%= Governor::Formatters.format_article article %>
-<%= render_plugin_partial(:after_article_summary, :locals => {:article => article}) unless current_page?(article) %>
+<article>
+  <header>
+    <h1><%= link_to_unless_current article.title, article %></h1>
+    <div class='subtitle'>
+      <div class='desc'>
+        <%= article.description %>
+        <%= render_plugin_partial(:after_article_description, :locals => {:article => article}) %>
+      </div>
+      <div class='date'>
+        posted <%= show_time_ago article.created_at %>
+      </div>
+    </div>
+  </header>
+  <%= Governor::Formatters.format_article article %>
+  <%= render_plugin_partial(:after_article_summary, :locals => {:article => article}) unless current_page?(article) %>
+</article>

@@ -15,6 +15,6 @@ module GovernorHelper
   end
 
   def show_time_ago(date)
-    %{<acronym title="#{date.strftime '%A, %B %d, %Y at %I:%M %p'}">#{distance_of_time_in_words_to_now date}</acronym> ago}.html_safe
+    %{<time pubdate datetime="#{date.localtime.iso8601}" title="#{l date}">#{distance_of_time_in_words_to_now date} ago</time>}.html_safe
   end
 end
