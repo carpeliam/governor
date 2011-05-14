@@ -41,7 +41,7 @@ generator will add an initializer to your app:
 
     rails generate governor:configure
 
-Here's a snippet from the initializer:
+Here's a snippet from the generated initializer:
 
     # How to reference the author of an article
     Governor.author = Proc.new do
