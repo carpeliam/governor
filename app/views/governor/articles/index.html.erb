@@ -1,5 +1,5 @@
 <% if resources.blank? %><%= (@blank_msg or "There are no articles for this time period.") %><% end %>
 <%= render_plugin_partial :before_articles %>
-<%= render :partial => '/governor/articles/article', :collection => resources %>
+<%= render :partial => 'governor/articles/article', :collection => resources %>
 
 <%= will_paginate(resources) if respond_to?(:will_paginate) %>
