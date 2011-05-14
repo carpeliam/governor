@@ -4,10 +4,6 @@
 for Rails, built for people who want to build their blog into their website,
 not build their website into their blog.
 
-I'm just getting started, but feel free to poke around. I'm sure that when
-this starts getting functional, I'll write some setup documentation here. And
-try the specs, they're fresh!
-
 == Dependencies
 
 * ActiveRecord
@@ -22,13 +18,7 @@ Gemfile.
 
     gem 'governor'
 
-Once you've installed the gem into your app, you need to run the generator:
-
-    rails generate governor:install
-
-This will add an initializer which allows you some loose configuration of
-Governor. As Governor grows, the initializer will actually get some teeth. Now
-you're ready to add a model:
+Now you're ready to add a model:
 
     rails generate governor:create_articles [CLASS_NAME]
 
@@ -42,27 +32,42 @@ Now that you have an article model and a set of routes, you're ready to plug
 it into your app. I'd recommend running `rake routes` to see what routes have
 been added, as they depend on the model name you chose.
 
-The Governor initialization will check if Devise is installed, and will try to
-Do The Right Thing if it is. If not, it'll yell at you, so be sure to set up
-your authorization rules in this file.
-
 == Authentication/Authorization
 
-For now, Governor checks with Devise to make sure someone's logged in before
-creating an article, and verifies that the logged in user is an article's
-author before allowing them to edit. You might have your own rules that you'd
-rather apply. You'll have to wait until a future version if you want something
-different, sorry.
+Governor checks to see if any of the popular authentication schemes are in
+place, and should work with Devise, Authlogic, and Clearance. If you're using
+something else, It's fairly easy to plug in to Governor. Running the following
+generator will add an initializer to your app:
+
+    rails generate governor:configure
+
+Here's a snippet from the initializer:
+
+    # How to reference the author of an article
+    Governor.author = Proc.new do
+      if defined?(Devise)
+        send("current_#{Devise.default_scope}")
+      elsif respond_to?(:current_user)
+        current_user
+      else
+        raise "Please define Governor.author. Run `rails generator governor:configure` to install an initializer."
+      end
+    end
+
+Replace the block with your own code. This will allow you to define
+app-specific definitions for the author of an article; authorization rules for
+editing/deleting articles; and what the application should do if someone
+breaks those rules.
 
 == Roadmap
 
 Less of a roadmap as a politician's promise of what will exist in future
 versions of Governor:
 
-* Strategies to play nice with different authentication/authorization schemes.
-* A fleshed-out Governor plugin API.
-* A few plugins: comments, LiveJournal synchronization, formatting engines,
-  search, permalinks, feeds, and who knows what else.
+* A better-documented plugin API.
+* More plugins[https://github.com/carpeliam/governor/wiki/Plugins].
+* The ability for a plugin to modify the rendering of an existing element on
+  the page.
 * A chicken in every pot and a car in every garage.
 
 Until v1.0 (or at least until things start to stabilize), I won't promise
