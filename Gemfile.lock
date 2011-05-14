@@ -1,8 +1,8 @@
 PATH
   remote: ./
   specs:
-    governor (0.5.3)
-      rails (~> 3.0.5)
+    governor (0.5.4)
+      rails (>= 3.0.5)
 
 GEM
   remote: http://rubygems.org/
@@ -122,7 +122,7 @@ DEPENDENCIES
   governor!
   jeweler (~> 1.5.2)
   mocha
-  rails (~> 3.0.5)
+  rails (>= 3.0.5)
   rcov
   rspec-rails
   sqlite3
