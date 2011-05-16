@@ -15,10 +15,12 @@ class Governor::ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.xml
   def index
+    # if plugins modify default scope, show everything if user is logged in
+    collection = governor_logged_in? ? model_class.unscoped : model_class
     set_resources(if model_class.respond_to?(:paginate)
-      model_class.paginate :page => params[:page], :order => 'created_at DESC'
+      collection.paginate :page => params[:page], :order => 'created_at DESC'
     else
-      model_class.all :order => 'created_at DESC'
+      collection.all :order => 'created_at DESC'
     end)
     respond_with resources
   end
