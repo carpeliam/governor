@@ -40,7 +40,8 @@ module Governor
       end
 
       def init_resource
-        set_resource model_class.find(params["#{mapping.singular}_id"] || params[:id])
+        model_scope = the_governor.present? ? model_class.unscoped : model_class
+        set_resource model_scope.find(params["#{mapping.singular}_id"] || params[:id])
       end
       
       def the_governor
