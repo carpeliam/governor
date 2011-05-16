@@ -34,7 +34,7 @@ class Governor::ArticlesController < ApplicationController
   # GET /articles/new
   # GET /articles/new.xml
   def new
-    set_resource model_class.new
+    set_resource model_class.unscoped.new
     respond_with resource
   end
 
@@ -46,7 +46,7 @@ class Governor::ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.xml
   def create
-    set_resource model_class.new(params[mapping.singular])
+    set_resource model_class.unscoped.new(params[mapping.singular])
     resource.author = the_governor
     if resource.save
       flash[:notice] = t('governor.article_created', :resource_type => mapping.humanize)
