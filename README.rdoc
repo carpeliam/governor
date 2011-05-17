@@ -6,10 +6,12 @@ not build their website into their blog.
 
 == Dependencies
 
+* Rails 3
 * ActiveRecord
 
-By 1.0, I'd like to make it possible to use Governor with other ORMs, but I'm
-not sure when that'll be.
+Various plugins[https://github.com/carpeliam/governor/wiki/Plugins] have their
+own dependencies. By 1.0, I'd like to make it possible to use Governor with
+other ORMs, but I'm not sure when that'll be.
 
 == Setting Up
 
@@ -31,6 +33,9 @@ app.
 Now that you have an article model and a set of routes, you're ready to plug
 it into your app. I'd recommend running `rake routes` to see what routes have
 been added, as they depend on the model name you chose.
+
+Next, go ahead and add some
+plugins[https://github.com/carpeliam/governor/wiki/Plugins]!
 
 == Authentication/Authorization
 
