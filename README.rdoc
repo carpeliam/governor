@@ -24,9 +24,9 @@ Now you're ready to add a model:
 
     rails generate governor:create_articles [CLASS_NAME]
 
-`CLASS_NAME` by default is Article, but feel free to specify something else,
-like Post, Blog, whatever. This will add a model, migration, and route to your
-app.
+<code>CLASS_NAME</code> by default is Article, but feel free to specify
+something else, like Post, Blog, whatever. This will add a model, migration,
+and route to your app.
 
 == Usage
 
