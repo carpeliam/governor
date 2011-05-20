@@ -15,12 +15,11 @@ other ORMs, but I'm not sure when that'll be.
 
 == Setting Up
 
-Governor is a gem, so the first thing to do is to add Governor to your
-Gemfile.
+First, add Governor to your Gemfile.
 
     gem 'governor'
 
-Now you're ready to add a model:
+and run <code>bundle install</code>. Now you're ready to add a model:
 
     rails generate governor:create_articles [CLASS_NAME]
 
@@ -28,11 +27,26 @@ Now you're ready to add a model:
 something else, like Post, Blog, whatever. This will add a model, migration,
 and route to your app.
 
+If you already have a model and you want to add Governor, you just need to
+include <code>Governor::Article</code> in your model. You'll also need to add
+a route as follows (assuming your model is called <code>Article</code>):
+
+    governate :articles
+
 == Usage
 
 Now that you have an article model and a set of routes, you're ready to plug
 it into your app. I'd recommend running `rake routes` to see what routes have
 been added, as they depend on the model name you chose.
+
+You can add a Governor Management bar to your app by calling
+<code>governor_header</code> in your view:
+
+    <% if user_logged_in_or_whatever? # whatever logic you want to use %>
+      <%= governor_header %>
+    <% end %>
+
+Plugins can hook into this header to add their own management tool links.
 
 Next, go ahead and add some
 plugins[https://github.com/carpeliam/governor/wiki/Plugins]!
@@ -69,6 +83,7 @@ breaks those rules.
 Less of a roadmap as a politician's promise of what will exist in future
 versions of Governor:
 
+* User-modifiable views.
 * A better-documented plugin API.
 * More plugins[https://github.com/carpeliam/governor/wiki/Plugins].
 * The ability for a plugin to modify the rendering of an existing element on
