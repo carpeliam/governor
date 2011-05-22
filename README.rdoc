@@ -86,6 +86,11 @@ versions of Governor:
 * User-modifiable views.
 * A better-documented plugin API.
 * More plugins[https://github.com/carpeliam/governor/wiki/Plugins].
+  * Asset Management (uploading photos etc)
+  * Web-based admin interface
+  * slugs, or <code>/yyyy/mm/dd/slug</code>-styled URLs
+* Plugin integration testing to make sure 1 plugin doesn't break others
+* More consistent i18n support
 * The ability for a plugin to modify the rendering of an existing element on
   the page.
 * A chicken in every pot and a car in every garage.
