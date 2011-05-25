@@ -78,12 +78,17 @@ app-specific definitions for the author of an article; authorization rules for
 editing/deleting articles; and what the application should do if someone
 breaks those rules.
 
+== Customization
+
+If you'd like to customize the views, you can run the rails generator:
+
+    rails generate governor:views
+
 == Roadmap
 
 Less of a roadmap as a politician's promise of what will exist in future
 versions of Governor:
 
-* User-modifiable views.
 * A better-documented plugin API.
 * More plugins[https://github.com/carpeliam/governor/wiki/Plugins].
   * Asset Management (uploading photos etc)
