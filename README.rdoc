@@ -89,7 +89,8 @@ If you'd like to customize the views, you can run the rails generator:
 Less of a roadmap as a politician's promise of what will exist in future
 versions of Governor:
 
-* A better-documented plugin API.
+* A better-documented {plugin
+  API}[https://github.com/carpeliam/governor/wiki/Guide-to-Creating-a-Plugin].
 * More plugins[https://github.com/carpeliam/governor/wiki/Plugins].
   * Asset Management (uploading photos etc)
   * Web-based admin interface
