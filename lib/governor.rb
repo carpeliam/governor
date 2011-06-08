@@ -1,17 +1,16 @@
-require 'governor/plugin'
-require 'governor/plugin_manager'
-require 'governor/view_manager'
-require 'governor/article'
-require 'governor/formatters'
-require 'governor/mapping'
-
-require 'governor/controllers/helpers'
-require 'governor/controllers/methods'
-
-require 'governor/rails'
-
-
 module Governor
+  autoload :Plugin, 'governor/plugin'
+  autoload :PluginManager, 'governor/plugin_manager'
+  autoload :ViewManager, 'governor/view_manager'
+  autoload :Article, 'governor/article'
+  autoload :Formatters, 'governor/formatters'
+  autoload :Mapping, 'governor/mapping'
+
+  module Controllers
+    autoload :Helpers, 'governor/controllers/helpers'
+    autoload :Methods, 'governor/controllers/methods'
+  end
+  
   @@resources = {}
   mattr_reader :resources, :default_resource, :authorization_rules
   
@@ -114,3 +113,5 @@ module Governor
     end
   end
 end
+
+require 'governor/rails'
