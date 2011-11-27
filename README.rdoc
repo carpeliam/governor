@@ -6,7 +6,7 @@ not build their website into their blog.
 
 == Dependencies
 
-* Rails 3
+* Rails 3.0 (<b>Rails 3.1 not yet supported</b>)
 * ActiveRecord
 
 Various plugins[https://github.com/carpeliam/governor/wiki/Plugins] have their
