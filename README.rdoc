@@ -1,4 +1,4 @@
-= Governor
+= Governor http://img.shields.io/badge/maintainer-needed-orange.png
 
 *Governor* (named after Rod Blagojevich) is the pluggable blogging platform
 for Rails, built for people who want to build their blog into their website,
@@ -6,7 +6,7 @@ not build their website into their blog.
 
 == Dependencies
 
-* Rails 3.0 (<b>Rails 3.1 not yet supported</b>)
+* Rails 3.0 (<b>Rails 3.1+ not supported</b>)
 * ActiveRecord
 
 Various plugins[https://github.com/carpeliam/governor/wiki/Plugins] have their
