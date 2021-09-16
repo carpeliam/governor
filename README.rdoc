@@ -1,5 +1,8 @@
 = Governor http://img.shields.io/badge/maintainer-needed-orange.png
 
+*Governor is archived* due to the fact that it's locked to Rails v3.0, and
+as such can't patch any security holes or support modern applications.
+
 *Governor* (named after Rod Blagojevich) is the pluggable blogging platform
 for Rails, built for people who want to build their blog into their website,
 not build their website into their blog.
